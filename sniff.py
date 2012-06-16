@@ -74,8 +74,8 @@ def encounters():
 def hello():
     return 'Hello Dima'
 
-@app.route('/hellodb')
-def hello():
+@app.route('/hello_db')
+def hello_db():
     db.create_all()
     return 'Hello DB'
 
@@ -87,6 +87,14 @@ def add_person():
     db.session.add(new_person)
     db.session.commit()
     return redirect(url_for('participants'))
+
+@app.route('/api/add_a_person',methods=['POST'])
+def api_add_person():
+    new_person=Person(request.args.get('name', 'Not in the request'))
+    db.session.add(new_person)
+    db.session.commit()
+    return redirect(url_for('participants'))
+
 
 @app.route('/add_an_encounter',methods=['POST'])
 def add_encounter():
