@@ -69,6 +69,10 @@ def updates():
 def encounters():
     return flask.render_template('encounters.html',people=Person.query.all(),encounters=Encounter.query.all())
 
+@app.route('/hello')
+def hello():
+    return 'Hello Dima'
+
 
 @app.route('/add_a_person',methods=['POST'])
 def add_person():
