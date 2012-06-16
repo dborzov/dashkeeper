@@ -5,7 +5,7 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask import request, redirect, url_for
 
 # configuration
-# DEBUG = True
+DEBUG = True
 SECRET_KEY = 'development key'
 USERNAME = 'admin'
 PASSWORD = 'default'
@@ -72,6 +72,12 @@ def encounters():
 @app.route('/hello')
 def hello():
     return 'Hello Dima'
+
+@app.route('/hellodb')
+def hello():
+    db.create_all()
+    return 'Hello DB'
+
 
 
 @app.route('/add_a_person',methods=['POST'])
