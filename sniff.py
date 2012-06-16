@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import flask
+import flask, os
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask import request, redirect, url_for
 
 # configuration
-DEBUG = True
+# DEBUG = True
 SECRET_KEY = 'development key'
 USERNAME = 'admin'
 PASSWORD = 'default'
@@ -86,4 +86,5 @@ def add_encounter():
 
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
