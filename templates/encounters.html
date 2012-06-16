@@ -1,0 +1,38 @@
+﻿<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title> List of encounters </title>
+</head>
+
+
+<body>
+<center>
+  <h1>List of encounters</h1>
+</center>
+
+
+    The list of recorded encounters:
+    <ul>
+    	{% for encounter in encounters %}
+    	<li>
+    	  A kind sir or madam named <b>{{ encounter.person.name }}</b> met someone and discussed an exhilirating subject of <b>{{ encounter.subject }}</b> in great lengths.
+    	</li>
+    	{% endfor %}
+    </ul>
+
+Record one more encounter:
+<form action="{{ url_for('add_encounter') }}" method="post">  
+  <label for="POST-person">Who is involved:</label> 
+  <select for="POST-person" name="person">
+  {% for person in people %}
+   <option value="{{ person.id }}">{{ person.name }}</option>
+  {% endfor %}
+  </select> 
+  <label for="POST-subject">Subject:</label>
+  <input id="POST-subject" type="text" name="subject"> <br> 
+  <input type="submit" value="Save">  
+</form> 
+
+</body>
+<html>

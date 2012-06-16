@@ -1,0 +1,30 @@
+﻿<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title> List of users </title>
+</head>
+
+
+<body>
+<center>
+  <h1>List of users</h1>
+</center>
+
+    The list of recorded participants:
+    <ul>
+    	{% for person in people %}
+    	  <li>{{ person.name }}</li>
+    	{% endfor %}
+    </ul>
+<br><br>
+
+Add a participant:
+<form action="{{ url_for('add_person') }}" method="post">  
+  <label for="POST-name">Name:</label>  
+  <input id="POST-name" type="text" name="name">  
+  <input type="submit" value="Save">  
+</form> 
+
+</body>
+<html>

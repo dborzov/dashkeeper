@@ -1,0 +1,39 @@
+﻿<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Dashboard </title>
+</head>
+
+
+<body>
+<center>
+  <h1>Dashboard</h1>
+  <a href="{{ url_for('participants') }}">Participants</a>,
+  <a href="{{ url_for('encounters') }}">Encounters</a>,
+  <a href="{{ url_for('updates') }}">Update log</a>, 
+  <br>
+  Every record at a glance.
+</center>
+
+
+    The list of recorded encounters:
+    <ul>
+    	{% for encounter in encounters %}
+    	<li>
+    	  A kind sir or madam named <b>{{ encounter.person.name }}</b> met someone and discussed an exhilirating subject of <b>{{ encounter.subject }}</b> in great lengths.
+    	</li>
+    	{% endfor %}
+    </ul>
+
+
+
+    The list of recorded participants:
+    <ul>
+    	{% for person in people %}
+    	  <li>{{ person.name }}</li>
+    	{% endfor %}
+    </ul>
+
+</body>
+<html>
