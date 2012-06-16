@@ -16,7 +16,8 @@ PASSWORD = 'default'
 app = flask.Flask(__name__)
 app.config.from_object(__name__)
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] =  os.environ.get('DATABASE_URL', 'sqlite:///db/database.db')
+
 db = SQLAlchemy(app)
 
 
