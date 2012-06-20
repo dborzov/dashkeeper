@@ -90,7 +90,7 @@ def add_person():
 
 @app.route('/api/add_a_person',methods=['POST'])
 def api_add_person():
-    new_person=Person(request.args.get('name', 'Not in the request'))
+    new_person=Person(request.args.get('name', 'Average Joe'))
     db.session.add(new_person)
     db.session.commit()
     return redirect(url_for('participants'))
