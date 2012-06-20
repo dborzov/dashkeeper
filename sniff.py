@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import flask, os
+import flask, os, random
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask import request, redirect, url_for
 
@@ -90,7 +90,7 @@ def add_person():
 
 @app.route('/api/add_a_person',methods=['POST'])
 def api_add_person():
-    new_person=Person(request.args.get('name', 'Average Joe'))
+    new_person=Person(request.headers.get('name', 'John Lennon'))
     db.session.add(new_person)
     db.session.commit()
     return redirect(url_for('participants'))
