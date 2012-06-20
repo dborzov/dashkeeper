@@ -98,7 +98,7 @@ def api_add_person():
 
 
 @app.route('/api/add_an_encounter',methods=['POST'])
-def api_add_person():
+def api_add_encounter():
     new_encounter=Encounter(request.headers.get('subject', 'Not given'),Person.query.filter_by(id=int(request.headers.get('person','1'))).first())
     db.session.add(new_encounter)
     db.session.commit()
