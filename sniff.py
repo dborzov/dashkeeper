@@ -88,12 +88,22 @@ def add_person():
     db.session.commit()
     return redirect(url_for('participants'))
 
+
 @app.route('/api/add_a_person',methods=['POST'])
 def api_add_person():
     new_person=Person(request.headers.get('name', 'John Lennon'))
     db.session.add(new_person)
     db.session.commit()
     return redirect(url_for('participants'))
+
+
+@app.route('/api/add_an_encounter',methods=['POST'])
+def api_add_person():
+    new_encounter=Encounter(request.headers.get('subject', 'Not given'),Person.query.filter_by(id=int(request.headers.get('person','1'))).first())
+    db.session.add(new_encounter)
+    db.session.commit()
+    return redirect(url_for('encounters'))
+
 
 
 @app.route('/add_an_encounter',methods=['POST'])
