@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import flask, os, random
+import flask, os, random, json
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask import request, redirect, url_for
 
@@ -60,6 +60,12 @@ def browse():
 @app.route('/participants')
 def participants():
     return flask.render_template('users.html',people=Person.query.all())
+
+
+@app.route('/payments.json')
+def paymentsjson():
+    stringus=[{"surname":person.name} for person in Person.query.all()]
+    return json.dumps(stringus)
 
 
 @app.route('/updates')
