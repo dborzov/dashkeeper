@@ -3,6 +3,7 @@ env
 .Python
 include
 lib
+application/secret_keys.py
 
 # Python Packages
 *.egg
@@ -15,8 +16,8 @@ eggs
 env
 parts
 var
-app/lib
-app/application/secret_keys.py
+lib
+secret_keys.py
 develop-eggs
 .installed.cfg
 
