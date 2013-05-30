@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+    <h1 id="">Database statistics (<a href="/">go back</a>)</h1>
+    <div>&nbsp;</div>
+    <span class="lead">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Movie title</th>
+                <th>Quotes on file</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in movies %}
+            <tr>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.number }} /  {{ movie.total }} &nbsp; <a type="submit" href="api/add/{{ movie.title }}"id="button-prompt" class="btn">add</a> <a type="submit" href="api/flush/{{ movie.title }}"id="button-prompt" class="btn">flush</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </span>
+    <br><br>
+    <a type="submit" href="api/index"id="button" class="btn">Index all!</a>
+
+
+
+{% endblock content %}
+
